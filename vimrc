@@ -16,6 +16,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'tpope/vim-fugitive'
 Plug 'MicahElliott/Rocannon'
+Plug 'jeetsukumaran/vim-indentwise'
 "Plug 'hejack0207/ansible.vim'	" fork of Rocannon, more up-to-date
 
 
