@@ -45,6 +45,7 @@ Plug 'neoclide/mycomment.vim'
 
 " completion plugins
 "Plug 'lifepillar/vim-mucomplete'
+
 " LSP
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
@@ -75,6 +76,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'dyng/ctrlsf.vim'
 
 Plug 'reedes/vim-lexical'
+
 
 " Initialize plugin system
 call plug#end()
@@ -183,6 +185,7 @@ endfunction
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
+      "\ asyncomplete#force_refresh()
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -192,6 +195,7 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+"""
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -447,6 +451,7 @@ let g:lexical#thesaurus_key = '<leader>t'
 " tail -f in vim https://stackoverflow.com/a/48296697 {{{
 " :set autoread | au CursorHold * checktime | call feedkeys("lh")
 " }}}
+
 
 " // at the end ensures filenames are unique
 set directory=$HOME/.vim/swapfiles//
