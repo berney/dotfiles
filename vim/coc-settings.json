@@ -1,0 +1,7 @@
+{
+  "python.jediEnabled": false,
+  "diagnostic.displayByAle": false,
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep/semgrep/rule_schema.yaml": "/*.yml"
+  }
+}
