@@ -52,7 +52,6 @@ ciphertext
 NIST
 DevOps
 hadolint
-hadolint
 localhost
 PeculiarVentures
 PFS
@@ -109,3 +108,13 @@ Gemnasium
 gemnasium
 Dependabot
 upstream's
+PostgreSQL
+redash
+dockerised
+spotbugs
+doxygen
+findbugs
+adoc
+paas
+JSON
+newrelic
