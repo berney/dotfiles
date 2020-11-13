@@ -43,6 +43,19 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/mycomment.vim'
 
+" completion plugins
+"Plug 'lifepillar/vim-mucomplete'
+" LSP
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+
+" async complete
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+"Plug 'majutsushi/tagbar'
+
 Plug 'Yggdroot/indentLine'
 
 Plug 'tpope/vim-fugitive'
@@ -93,7 +106,7 @@ let g:ale_linters_ignore = {
   \}
 " black - uncompromising opinionated fixer, not configurable, deterministic
 " isort - isort your imports, so you don't have to
-let g:ale_fixers = {'*': [], 'python': ['black', 'isort']}
+"let g:ale_fixers = {'*': [], 'python': ['black', 'isort']}
 " remove_trailing_lines, and  trime_whitespace are builtin fixers
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort']}
 " For vim script language linting
@@ -143,8 +156,26 @@ if has('patch-8.1.1564')
 else
   set signcolumn=yes
 endif
+
+
+" asyncomplete
+" tab completion
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+""" https://github.com/prabirshrestha/asyncomplete.vim/pull/6
+"let g:asyncomplete_auto_popup = 0
+
+
 "
 " XXX This stops you from inserting tabs after a  `:` in a Makefile...
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 "
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -154,11 +185,6 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -421,3 +447,7 @@ let g:lexical#thesaurus_key = '<leader>t'
 " tail -f in vim https://stackoverflow.com/a/48296697 {{{
 " :set autoread | au CursorHold * checktime | call feedkeys("lh")
 " }}}
+
+" // at the end ensures filenames are unique
+set directory=$HOME/.vim/swapfiles//
+set backupdir=$HOME/.vim/backups//
