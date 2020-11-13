@@ -16,3 +16,6 @@
 [submodule "vim-plug"]
 	path = vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "vim/pack/plugins/start/kotlin-vim"]
+	path = vim/pack/plugins/start/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim.git
