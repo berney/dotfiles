@@ -1,2 +1,3 @@
-vim/plugged
-vim/spell/*.spl
+/vim/plugged
+/vim/spell/*.spl
+/vim/swapfiles/**
