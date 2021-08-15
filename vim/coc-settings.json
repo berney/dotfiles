@@ -1,7 +1,106 @@
 {
   "python.jediEnabled": false,
   "diagnostic.displayByAle": false,
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep/semgrep/rule_schema.yaml": "/*.yml"
-  }
+  "clangd.path": "/home/berne/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    },
+    "semgrep-python": {
+      //"enable": false,
+      "filetypes": ["python"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      //"args": ["--node-ipc"],
+      //"trace.server": "verbose",
+      //"revealOutputChannelOn": "info",
+      //"disableDynamicRegister": true,
+      //"disableWorkspaceFolders": true,
+      //"disableCompletion": true,
+      //"disableSnippetCompletion": true,
+      "settings": {
+        "semgrep": {
+          "rules": "r/python"
+        }
+      }
+
+      //
+      //"//command": "docker",
+      //"//args": [ "run", "-i", "berne/semgrep-lsp:latest" ],
+      //
+      //"host": "127.0.0.1",
+      //"port": 8008
+    },
+    "semgrep-dockerfile": {
+      "filetypes": ["dockerfile"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      // This is redundant, args will end up being "--node-ipc --node-ipc"
+      "//args": ["--node-ipc"],
+      //"trace.server": "verbose",
+      //"execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["dockerfile", "generic"],
+          "rules": "p/dockerfile"
+        }
+      }
+    },
+
+    "semgrep-yaml": {
+      "filetypes": ["yaml"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      //"trace.server": "verbose",
+      //"execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["yaml"],
+          //"rules": "p/docker-compose"
+          "rules": "r/yaml"
+        }
+      }
+    },
+
+    "semgrep-json": {
+      "filetypes": ["json"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["json"],
+          "rules": "r/json"
+        }
+      }
+    },
+
+    "semgrep-javascript": {
+      "filetypes": ["javascript"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["javascript"],
+          "rules": "r/javascript"
+        }
+      }
+    },
+
+    "semgrep-golang": {
+      "filetypes": ["go"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["go"],
+          "rules": "p/gosec"
+          //"rules": "p/golang"
+          //"rules": "r/go"
+        }
+      }
+    }
+  },
+  "explorer.icon.enableNerdfont": true
 }
