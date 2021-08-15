@@ -21,3 +21,5 @@
 	helper = cache
 [core]
 	autocrlf = false
+[init]
+	defaultBranch = main
