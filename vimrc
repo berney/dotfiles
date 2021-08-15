@@ -108,13 +108,17 @@ let g:ale_linters = {'python': ['flake8', 'pydocstyle', 'bandit', 'mypy']}
 " alex mainly finds things like XXX, fire, just, failure, etc. which are fine in the contexts I'm using them.
 let g:ale_linters_ignore = {
   \   'markdown': ['languagetool'],
-  \   'asciidoc': ['languagetool', 'alex']
+  \   'asciidoc': ['languagetool', 'alex', 'write-good']
   \}
 " black - uncompromising opinionated fixer, not configurable, deterministic
 " isort - isort your imports, so you don't have to
 "let g:ale_fixers = {'*': [], 'python': ['black', 'isort']}
 " remove_trailing_lines, and  trime_whitespace are builtin fixers
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort']}
+" If you want to make a minimal patch and don't want the ALE fixer touching
+" many lines you can do `let b:ale_fixers = {'*': []}`, this will set it just
+" for the buffer rather than globally.
+" You can view the values of internal-variables with `echo g:ale_fixers` etc.
 " For vim script language linting
 " - Install node, follow
 "   https://github.com/nodejs/docker-node/blob/master/12/alpine3.12/Dockerfile
