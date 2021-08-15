@@ -332,9 +332,9 @@ let g:airline_theme='monokai_tasty'                   " airline theme
 " statusline stuff {{{
 " vim-terraform-completion
 " Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 " }}}
 
 " syntastic stuff {{{
