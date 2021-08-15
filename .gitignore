@@ -1,4 +1,5 @@
 /vim/plugged
 /vim/spell/*.spl
 /vim/sessions/default.vim
+/vim/backups/**
 /vim/swapfiles/**
