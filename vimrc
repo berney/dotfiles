@@ -473,6 +473,8 @@ let g:lexical#thesaurus_key = '<leader>t'
 " }}}
 
 
+set mouse=a
+
 " // at the end ensures filenames are unique
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backups//
