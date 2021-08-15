@@ -89,10 +89,14 @@ augroup filetype_vim
 augroup END
 " }}}
 
+" use `:IndentLinesToggle` to toggle to hide for copy-pasting
+" This plugin is also concealing `"` double-quotes in json files, which looks
+" pretty but make editing difficult., use the toggle command to flick off/on
 " sublime style
 let g:indentLine_char = '┊'
 
 """ ALE setup {{{
+" Run `:sign unplace group=ale *` to hide the sign gutter (for copying and pasting)
 " Run `:ALEInfo` to see value of variables and output of commands etc.
 "   suggested linters etc. It will show you if the necessary external comamnds
 "   are installed or not, if the command failed.
@@ -374,6 +378,7 @@ match ExtraWhitespace /\s\+$/
   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 augroup END
 " }}}
+
 
 " colorschemes {{{
 " colorscheme elflord
