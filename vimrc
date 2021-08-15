@@ -394,6 +394,16 @@ colorscheme monokai
 "colorscheme gruvbox
 " }}}
 
+" coc highlight colorscheme fix {{{
+" Coc with monokai has really ugly dark red on grey for error popups which
+" looks shit with monokai
+"
+" Original
+" CocErrorFloat  xxx ctermfg=52 ctermbg=237 guifg=#ff0000 guibg=#3f4145
+highlight CocErrorFloat ctermfg=Red guifg=#ff0000
+" }}}
+
+
 " tweaking colors {{{
 " If you don't like a particular colour choice from `vim-monokai-tasty`, you can
 " override it here. For example, to change the colour of the search hightlight:
