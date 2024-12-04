@@ -8,9 +8,68 @@
 	smsr = submodule status --recursive
 	loga = log --all --graph --decorate=full
 	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lg1c = log --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(dim white)%ce%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'
 	lg1a = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg1r = log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 	lg2a = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg2r = log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lg2sr = log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)%d%C(reset)	- %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lgs = "!f() { \
+		git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
+		sed \
+		-e 's#<sig>G</sig>#Good#' \
+		-e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
+		-e 's#<sig>U</sig>#Unknown#' \
+		-e 's#<sig>X</sig>#Expired#' \
+		-e 's#<sig>Y</sig>#Expired Key#' \
+		-e 's#<sig>R</sig>#Revoked#' \
+		-e 's#<sig>E</sig>#Missing Key#' \
+		-e 's#<sig>N</sig>#NoSignature#' | \
+		less -r; \
+		}; f"
+	lgs1 = "!f() { \
+		git log --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
+		sed \
+		-e 's#<sig>G</sig>#Good#' \
+		-e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
+		-e 's#<sig>U</sig>#Unknown#' \
+		-e 's#<sig>X</sig>#Expired#' \
+		-e 's#<sig>Y</sig>#Expired Key#' \
+		-e 's#<sig>R</sig>#Revoked#' \
+		-e 's#<sig>E</sig>#Missing Key#' \
+		-e 's#<sig>N</sig>#NoSignature#' \
+		$@ | \
+		less -r; \
+		}; f"
+	lgs1c = "!f() { \
+		git log --color --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' . | \
+		sed \
+		-e 's#<sig>G</sig>#Good#' \
+		-e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
+		-e 's#<sig>U</sig>#Unknown#' \
+		-e 's#<sig>X</sig>#Expired#' \
+		-e 's#<sig>Y</sig>#Expired Key#' \
+		-e 's#<sig>R</sig>#Revoked#' \
+		-e 's#<sig>E</sig>#Missing Key#' \
+		-e 's#<sig>N</sig>#NoSignature#' \
+		$@ | \
+		less -r; \
+		}; f"
+	lgs10 = "!f() { \
+		git log -10 --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
+		sed \
+		-e 's#<sig>G</sig>#Good#' \
+		-e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
+		-e 's#<sig>U</sig>#Unknown#' \
+		-e 's#<sig>X</sig>#Expired#' \
+		-e 's#<sig>Y</sig>#Expired Key#' \
+		-e 's#<sig>R</sig>#Revoked#' \
+		-e 's#<sig>E</sig>#Missing Key#' \
+		-e 's#<sig>N</sig>#NoSignature#' \
+		$@ | \
+		less -r; \
+		}; f"
 	lg = !"git lg1a"
 	vimdiff = difftool --tool=vimdiff --no-prompt
 [push]
@@ -23,3 +82,18 @@
 	autocrlf = false
 [init]
 	defaultBranch = main
+[diff]
+	colorMoved = zebra
+[tag]
+	sort = version:refname
+[gpg]
+	program = /usr/bin/gpg2
+[pull]
+	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff "asc"]
+	textconv = gpg --list-packets
