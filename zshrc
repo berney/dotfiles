@@ -130,8 +130,16 @@ complete -o nospace -C "$HOME/bin/terraform" terraform
 
 # Source all files in ~/.zshrc.d/ if the directory exists
 if [ -d "$HOME/.zshrc.d" ]; then
-    for file in "$HOME/.zshrc.d"/*.zsh; do
+    # The `(N)` glob parameter avoids error when glob fails to match anything
+    for file in "$HOME/.zshrc.d"/*.zsh(N); do
         [ -r "$file" ] && . "$file"
     done
+    # This directory is ignored by git, so local only
+    if [ -d "$HOME/.zshrc.d/private" ]; then
+        # The `(N)` glob parameter avoids error when glob fails to match anything
+        for file in "$HOME/.zshrc.d"/private/*.zsh(N); do
+            [ -r "$file" ] && . "$file"
+        done
+    fi
     unset file
 fi
