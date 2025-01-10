@@ -127,3 +127,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$HOME/bin/terraform" terraform
+
+# Source all files in ~/.zshrc.d/ if the directory exists
+if [ -d "$HOME/.zshrc.d" ]; then
+    for file in "$HOME/.zshrc.d"/*.zsh; do
+        [ -r "$file" ] && . "$file"
+    done
+    unset file
+fi
