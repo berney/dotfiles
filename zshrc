@@ -73,7 +73,6 @@ bindkey '^x^e' edit-command-line
 
 
 setopt prompt_subst
-. ~/.git-prompt.sh
 
 # `ssh` depending on config can get an error, it this is not a full path
 # `Shell "zsh" is not executable: No such file or directory`
