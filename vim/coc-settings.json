@@ -2,12 +2,66 @@
   "python.jediEnabled": false,
   "diagnostic.displayByAle": false,
   "clangd.path": "/home/berne/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "tsserver.npm": "/usr/bin/npm",
+  "tsserver.log": "verbose",
+  "yaml.trace.server": "verbose",
 
+  "diagnostic-languageserver.filetypes": {
+    "terraform": [
+      {
+        "command": "checkov",
+        "args": ["-f", "%filepath"],
+        "offsetLine": 0,
+        "offsetColumn": 0,
+        "sourceName": "checkov",
+        "formatLines": 1,
+        "formatPattern": [
+          "^(\\d+):(\\d+)\\s+(\\w+)\\s+(.*)$",
+          {
+            "line": 1,
+            "column": 2,
+            "security": 3,
+            "message": 4
+          }
+        ],
+        "securities": {
+          "LOW": "Warning",
+          "MEDIUM": "Warning",
+          "HIGH": "Error"
+        }
+      }
+    ]
+  },
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
+    },
+
+    "kotlin": {
+      //"command": "~/lsp/kotlin/server/bin/kotlin-language-server",
+      "command": "~/.config/coc/extensions/coc-kotlin-data/langServerInstall/server/bin/kotlin-language-server",
+      "trace.server": "verbose",
+      "filetypes": ["kotlin"]
+    },
+
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      // customize filetypes to your needs
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
+
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [ "serve" ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
     },
     "semgrep-python": {
       //"enable": false,
@@ -33,11 +87,12 @@
       //"host": "127.0.0.1",
       //"port": 8008
     },
+
     "semgrep-dockerfile": {
       "filetypes": ["dockerfile"],
       "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
       // This is redundant, args will end up being "--node-ipc --node-ipc"
-      "//args": ["--node-ipc"],
+      //"args": ["--node-ipc"],
       //"trace.server": "verbose",
       //"execArgv": ["--nolazy", "--inspect-brk=6045"],
       "settings": {
@@ -60,6 +115,7 @@
           "languages": ["yaml"],
           //"rules": "p/docker-compose"
           "rules": "r/yaml"
+          //"rules": "~/co/git/semgrep-rules/yaml/semgrep/metadata-technology.yaml"
         }
       }
     },
@@ -71,7 +127,19 @@
         "semgrep": {
           // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
           "languages": ["json"],
-          "rules": "r/json"
+          "rules": "~/work/elttam/burgerandchips/semgrep/json/aws/security/bool-mfa.yaml"
+        }
+      }
+    },
+
+    "semgrep-java": {
+      "filetypes": ["java"],
+      "module": "/home/berne/co/git/semgrep-vscode/out/server/src/server.js",
+      "settings": {
+        "semgrep": {
+          // the semgrep-vscode won't scan the file if this doesn't match the type, we can tell it what types, and basically it should match the filetypes above that enable this LSP.
+          "languages": ["java"],
+          "rules": "r/java"
         }
       }
     },
@@ -102,5 +170,17 @@
       }
     }
   },
-  "explorer.icon.enableNerdfont": true
+
+  "explorer.icon.enableNerdfont": true,
+
+  "java.trace.server": "verbose",
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-14",
+      "path": "/usr/lib/jvm/default-jvm"
+    }
+  ],
+  "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/home/berne/.config/coc/extensions/node_modules/coc-java-lombok/jar/lombok.jar\"",
+  "coc.preferences.extensionUpdateCheck": "never"
 }
