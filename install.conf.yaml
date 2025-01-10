@@ -13,6 +13,7 @@
     ~/.vimrc: vimrc
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.zshrc.d: zshrc.d
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
