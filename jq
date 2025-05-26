@@ -20,6 +20,10 @@ def pretty_table:
  (first | keys_unsorted | ( ., map(length * "-") )), .[] | map(.) | @tsv
   ;
 
+def tw5_table:
+ (first | keys_unsorted |  map("!\(.)")), .[] | map(.) | join("|") | sub("^"; "|") | sub("$"; "|")
+  ;
+
 # Vertical table, heading column
 def table:
   to_entries[] | map(.) | @tsv;
