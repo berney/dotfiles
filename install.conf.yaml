@@ -14,6 +14,7 @@
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
     ~/.zshrc.d: zshrc.d
+    ~/.config/zellij: zellij
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
