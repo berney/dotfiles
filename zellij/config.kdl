@@ -175,6 +175,12 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
+        bind "Alt t" {
+            Run "zft" {
+                floating true
+                close_on_exit true
+            }
+        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
@@ -303,7 +309,7 @@ default_mode "locked"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-// default_shell "fish"
+default_shell "zsh"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
