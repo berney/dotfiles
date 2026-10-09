@@ -15,6 +15,7 @@
     ~/.zshrc: zshrc
     ~/.zshrc.d: zshrc.d
     ~/.config/zellij: zellij
+    ~/.config/nvim: nvim
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
