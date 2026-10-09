@@ -87,15 +87,11 @@ export PATH="$PATH:$HOME/.local/bin"
 # for github CLI etc
 export MANPATH="/usr/share/man:/usr/local/share/man"
 
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpg-connect-agent updatestartuptty /bye > /dev/null
-
 # inherit `local` and `any` causes it to spawn a new agent
 #eval $(keychain --eval --inherit local)
 #eval $(keychain --eval --inherit any)
 #eval $(keychain --agents ssh,gpg --eval)
-eval $(keychain --agents gpg --eval)
+eval "$(keychain --eval)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
