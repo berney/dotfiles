@@ -3,6 +3,7 @@ local M = {}
 vim.diagnostic.config({
   severity_sort = true,
   float = { border = "rounded", source = true },
+  virtual_text = { current_line = true, spacing = 2, source = "if_many" },
 })
 
 -- Server settings layered on top of nvim-lspconfig's lsp/*.lua defaults.
