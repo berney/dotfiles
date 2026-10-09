@@ -46,7 +46,6 @@ bindkey "\e[4~" end-of-line
 alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls --color'
-alias vi=vim
 alias python=python3
 alias clip.exe=/mnt/c/Windows/System32/clip.exe
 alias clip=/mnt/c/Windows/System32/clip.exe
@@ -56,9 +55,6 @@ alias open=/mnt/c/Windows/explorer.exe
 # Java
 export JAVA_HOME=/usr/lib/jvm/default-jvm
 export JDK_HOME="${JAVA_HOME}"
-
-
-export EDITOR=vim
 
 
 # Enable Ctrl-x-e to edit command line
