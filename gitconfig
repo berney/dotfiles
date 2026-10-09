@@ -97,3 +97,5 @@
 	required = true
 [diff "asc"]
 	textconv = gpg --list-packets
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
